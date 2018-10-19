@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sponews.dao.MatchDAO">
+	<select id="getMatchList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT match_id, league, match_mm, match_time, description, home_name, away_name, status, score FROM sway_match WHERE league = #{league} AND match_mm = #{month} ORDER BY match_time DESC
+	</select>
+</mapper>

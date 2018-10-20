@@ -1,0 +1,9 @@
+com\sponews\controller\BaseController.class
+com\sponews\controller\MatchController.class
+com\sponews\controller\MainController.class
+com\sponews\controller\UserController.class
+com\sponews\dao\MatchDAO.class
+com\sponews\service\MatchService.class
+com\sponews\utils\CommonUtils.class
+com\sponews\model\MatchVO.class
+com\sponews\controller\BoardController.class

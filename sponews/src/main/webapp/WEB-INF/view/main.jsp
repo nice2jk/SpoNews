@@ -43,7 +43,7 @@
 	<img src="/images/org_logo.png" class="img-fluid" alt="Responsive image">
 	</div>
 	
-	<table style="table-layout: fixed" class="table">
+	<table style="table-layout: fixed" class="table table-sm">
 		<thead class="thead-light">
 			<tr class="table-info">
 				<th colspan="2" scope="col">
@@ -82,6 +82,19 @@
 					<td class="font-italic text-danger" style="text-overflow: ellipsis; overflow: hidden;" align="right">${match.m_time}</td>
 				</tr>
 			</c:forEach>
+		</tbody>
+	</table>
+	
+	<table style="table-layout: fixed" class="table table-sm">
+		<thead class="thead-light">
+			<tr class="table-info">
+				<th colspan="2" scope="col">
+				<a href="#" class="text-danger">팁스터 순위</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			
 		</tbody>
 	</table>
 	

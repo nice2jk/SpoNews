@@ -14,7 +14,7 @@
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
 
-<title>Sponews</title>
+<title>Spotech</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,12 +28,14 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/match.spn">Match<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="/result.spn">Result</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">User</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Point</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Board</a></li>				
-			</ul>			
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/match.spn">경기 일정</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/result.spn">경기 결과</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">리그 순위</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">팁스터</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/news.spn">축구 뉴스</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">Spotech</a></li>
+			</ul>		
 		</div>
 	</nav>
 

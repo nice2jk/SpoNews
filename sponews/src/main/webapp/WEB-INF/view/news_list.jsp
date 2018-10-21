@@ -21,6 +21,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand font-weight-bold" href="/">SPOTECH</a>
+    		
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -45,62 +46,48 @@
 	<img src="/images/org_logo.png" class="img-fluid" alt="Responsive image">
 	</div>
 	
-	<table style="table-layout: fixed" class="table table-sm">
+	<table style="table-layout: fixed" class="table">
 		<thead class="thead-light">
 			<tr class="table-info">
 				<th colspan="2" scope="col">
-				<a href="#" class="text-danger">다가오는 경기 일정</a>
+				<a href="http://secret4news.tk/main?category=socc" class="text-info" target="_blank">축구 뉴스 (쓰잘데기)</a>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="match" begin="0" end="10" items="${match_list}" varStatus="status">
+			<c:forEach var="news" begin="0" end="20" items="${news_list}" varStatus="status">
 				<tr>					
-					<td class="font-weight-bold" colspan="2" style="text-overflow: ellipsis; overflow: hidden;"><a href="#" >${match.home_name} VS ${match.away_name}</a></td>										
+					<td colspan="2" style="text-overflow: ellipsis; overflow: hidden;"><a href="${news.link}" target="_blank" class="font-weight-bold">${news.title}</a></td>										
 				</tr>
 				<tr class="table table-borderless">
-					<td class="font-weight-light text-dark" style="white-space: nowrap">
-					<c:choose>
-					<c:when test="${match.league == 'SPL' }">
-						<img src="/images/le_spl.png" alt="..." class="img-thumbnail"> <a href="/match.spn?league=SPL">라리가</a>
-					</c:when>
-					<c:when test="${match.league == 'IPL' }">
-						<img src="/images/le_ipl.png" alt="..." class="img-thumbnail"> <a href="/match.spn?league=IPL">세리아A</a>
-					</c:when>
-					<c:when test="${match.league == 'GPL' }">
-						<img src="/images/le_gpl.png" alt="..." class="img-thumbnail"> <a href="/match.spn?league=GPL">분데스리가</a>
-					</c:when>
-					<c:when test="${match.league == 'FPL' }">
-						<img src="/images/le_fpl.png" alt="..." class="img-thumbnail"> <a href="/match.spn?league=FPL">리그1</a>
-					</c:when>
-					<c:when test="${match.league == 'UCL' }">
-						<img src="/images/le_ucl.png" alt="..." class="img-thumbnail"> <a href="/match.spn?league=UCL">챔피언스리그</a>
-					</c:when>
-					<c:otherwise>
-						<img src="/images/le_epl.png" alt="..." class="img-thumbnail"> <a href="/match.spn?league=EPL">프리미어리그</a>
-					</c:otherwise>
-					</c:choose>
-					</td>
-					<td class="font-italic text-danger" style="text-overflow: ellipsis; overflow: hidden;" align="right">${match.m_time}</td>
+					<td class="font-weight-light font-italic text-dark" style="white-space: nowrap">${news.cpname}</td>
+					<td class="font-weight-light text-dark" style="text-overflow: ellipsis; overflow: hidden;" align="right">
+					<jsp:useBean id="dateValue" class="java.util.Date"/>
+					<jsp:setProperty name="dateValue" property="time" value="${news.ctime}"/>
+					<fmt:formatDate value="${dateValue}" pattern="MM/dd/yyyy HH:mm"/></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
-	<hr>
-	
-	<table style="table-layout: fixed" class="table table-sm">
-		<thead class="thead-light">
-			<tr class="table-info">
-				<th colspan="2" scope="col">
-				<a href="#" class="text-danger">팁스터 순위 (Coming Soon!)</a>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			
-		</tbody>
-	</table>
+	<nav aria-label="pagination">
+	  <ul class="pagination justify-content-center">
+	  	<c:choose>
+	  		<c:when test="${offset == 0 }">
+	  			<li class="page-item disabled">
+			      <a class="page-link" href="#" tabindex="-1">최신</a>
+			    </li>
+	  		</c:when>
+	  		<c:otherwise>
+	  			<li class="page-item">
+			      <a class="page-link" href="/news.spn?offset=${offset-20 }">이전</a>
+			    </li>
+	  		</c:otherwise>
+	  	</c:choose>
+	    <li class="page-item"><a class="page-link" href="#">현재 페이지</a></li>
+	    <li class="page-item"><a class="page-link" href="/news.spn?offset=${offset+20 }">다음</a></li>
+	  </ul>
+	</nav>
 	
 	<hr>
 	<p>
@@ -128,5 +115,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
 		integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
 		crossorigin="anonymous"></script>
+	
 </body>
 </html>

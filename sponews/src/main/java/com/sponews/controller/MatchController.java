@@ -24,7 +24,7 @@ public class MatchController {
 			@RequestParam(value="league", required=true, defaultValue="EPL") String league,
 			@RequestParam(value="month", required=true, defaultValue="0") int month,
 			Model model) {
-		System.out.println("getMatchList" + month);
+		System.out.println("getMatchList " + month);
 		
 		if(month == 0) {
 			month = CommonUtils.nowMonth();
@@ -43,7 +43,7 @@ public class MatchController {
 			@RequestParam(value="league", required=true, defaultValue="EPL") String league,
 			@RequestParam(value="month", required=true, defaultValue="0") int month,
 			Model model) {
-		System.out.println("getResultList" + month);
+		System.out.println("getResultList " + month);
 		
 		if(month == 0) {
 			month = CommonUtils.nowMonth();

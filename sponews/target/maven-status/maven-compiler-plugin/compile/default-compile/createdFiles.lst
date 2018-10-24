@@ -1,9 +1,15 @@
 com\sponews\controller\BaseController.class
 com\sponews\controller\MatchController.class
+com\sponews\service\NewsService$1.class
+com\sponews\service\NewsService.class
+com\sponews\dao\MatchDAO.class
+com\sponews\controller\NewsController.class
 com\sponews\controller\MainController.class
 com\sponews\controller\UserController.class
-com\sponews\dao\MatchDAO.class
+com\sponews\commons\Constants.class
 com\sponews\service\MatchService.class
 com\sponews\utils\CommonUtils.class
 com\sponews\model\MatchVO.class
+com\sponews\utils\HttpUtils.class
+com\sponews\model\NewsVO.class
 com\sponews\controller\BoardController.class

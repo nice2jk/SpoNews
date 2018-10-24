@@ -1,5 +1,8 @@
 package com.sponews.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -30,11 +33,25 @@ public class MatchController {
 			month = CommonUtils.nowMonth();
 		}
 		
+		List<HashMap<String, Object>> matchList = matchService.getMatchList(league, month);
 		model.addAttribute("league", league);
-		model.addAttribute("match_list", matchService.getMatchList(league, month));
+		model.addAttribute("match_list", matchList);
+		model.addAttribute("size", matchList.size());
 		model.addAttribute("month", month);
 		
 		return "match_list";
+	}
+	
+	@RequestMapping(value="/matchDetail.spn", method=RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String getMatchDetail(
+			@RequestParam(value="match_id", required=true) int matchId,
+			Model model) {
+		System.out.println("getMatchDetail " + matchId);
+
+		model.addAttribute("match", matchService.getMatch(matchId));
+		
+		return "match_detail";
 	}
 	
 	@RequestMapping(value="/result.spn", method=RequestMethod.GET)
@@ -54,5 +71,17 @@ public class MatchController {
 		model.addAttribute("month", month);
 		
 		return "result_list";
+	}
+	
+	@RequestMapping(value="/matchComment.spn", method=RequestMethod.POST)
+	@ResponseStatus(HttpStatus.OK)
+	public String getMatchStory(int matchId, String comment, int inlineRadioOptions, Model model) {
+		System.out.println("matchComment " + matchId);
+		
+		HashMap<String, Object> match = matchService.setComment(matchId, inlineRadioOptions, comment); 
+		model.addAttribute("match", match);
+		model.addAttribute("league", (String) match.get("league"));		
+		
+		return "match_detail";
 	}
 }

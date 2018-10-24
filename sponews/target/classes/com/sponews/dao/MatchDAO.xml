@@ -6,10 +6,6 @@
 		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS m_time, home_name, away_name FROM sway_match WHERE FROM_UNIXTIME(match_time) > NOW() ORDER BY match_time ASC LIMIT 10
 	</select>
 	
-	<select id="getAllMatchList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS m_time, description, home_name, away_name, status, score FROM sway_match WHERE league = #{league} AND match_mm = #{month} ORDER BY match_time DESC
-	</select>
-	
 	<select id="getMatchList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS m_time, description, home_name, away_name, status, score FROM sway_match WHERE league = #{league} AND match_mm = #{month} AND status = 0 ORDER BY match_time ASC
 	</select>
@@ -17,4 +13,25 @@
 	<select id="getResultList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS m_time, description, home_name, away_name, status, score, result FROM sway_match WHERE league = #{league} AND match_mm = #{month} AND status = 1 ORDER BY match_time DESC
 	</select>
+	
+	<select id="getMatch" resultType="java.util.HashMap">
+		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS c_time, description, home_name, away_name, status, score FROM sway_match WHERE match_id = #{match_id}
+	</select>
+	
+	<select id="getMatchWithComment" resultType="java.util.HashMap">
+		SELECT A.match_id, A.league, A.match_mm, A.match_time, A.home_name, A.away_name, A.status, A.score, A.result, B.comment, B.cre_dttm FROM match_comment AS B INNER JOIN sway_match AS A ON A.match_id = B.match_id WHERE A.match_id = #{match_id} ORDER BY B.cre_dttm DESC
+	</select>
+	 	
+	<insert id="setComment">
+		INSERT INTO match_comment (match_id, result, story) VALUES (#{matchId}, #{result}, #{story})
+	</insert>
+	
+	<select id="getCommentList" resultType="java.util.HashMap">
+		SELECT user_id, result, story, cre_dttm AS c_time FROM match_comment WHERE match_id = #{match_id} ORDER BY cre_dttm DESC
+	</select>
+	
+	<select id="getCommentCount" resultType="java.util.HashMap">
+		SELECT COUNT(*) AS total, COUNT(IF(result = 1, result, NULL)) AS win, COUNT(IF(result = 2, result, NULL)) AS lose, COUNT(IF(result = 0, result, NULL)) AS draw FROM match_comment WHERE match_id = #{match_id}
+	</select>
+	
 </mapper>

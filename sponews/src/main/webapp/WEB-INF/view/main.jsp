@@ -29,6 +29,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/match.spn">경기 일정</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/result.spn">경기 결과</a></li>
@@ -49,8 +50,8 @@
       <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary">최신 경기 일정</h6>
       <c:forEach var="match" begin="0" end="10" items="${match_list}" varStatus="status">
         <div class="media text-muted pt-3">        
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <div class="d-flex justify-content-between mb-2 align-items-center w-100">
+        <div class="media-body pb-2 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between mb-3 align-items-center w-100">
             <c:choose>
 				<c:when test="${match.league == 'SPL' }">
 					<a href="/match.spn?league=SPL"><img src="/images/le_spl.png" alt="..." class="img-thumbnail"> 라리가</a>

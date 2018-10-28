@@ -29,6 +29,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link font-weight-bold"
 					href="/match.spn">경기 일정</a></li>
@@ -55,88 +56,83 @@
 
 	<div class="nav-scroller bg-warning shadow-sm">
 		<nav class="nav nav-underline">
-			<a class="nav-link" href="/result.spn?league=EPL">프리미어</a> <a
-				class="nav-link" href="/result.spn?league=SPL">라리가</a> <a
-				class="nav-link" href="/result.spn?league=GPL">분데스리가</a> <a
-				class="nav-link" href="/result.spn?league=IPL">세리아A</a> <a
-				class="nav-link" href="/result.spn?league=FPL">리그1</a> <a
-				class="nav-link" href="/result.spn?league=UCL">챔피언스</a> <a
-				class="nav-link" href="#">K리그</a>
+			<small><a class="nav-link" href="/result.spn?league=EPL">프리미어</a></small>
+			<small><a class="nav-link" href="/result.spn?league=SPL">라리가</a></small>
+			<small><a class="nav-link" href="/result.spn?league=GPL">분데스리가</a></small>
+			<small><a class="nav-link" href="/result.spn?league=IPL">세리아A</a></small>
+			<small><a class="nav-link" href="/result.spn?league=FPL">리그1</a></small>
+			<small><a class="nav-link" href="/result.spn?league=UCL">챔피언스</a></small>
+			<small><a class="nav-link" href="#">K리그</a></small>
 		</nav>
 	</div>
 
-	<table style="table-layout: fixed" class="table">
-		<thead class="thead-light">
-			<tr class="table-info">
-				<th colspan="2" scope="col"><c:choose>
-						<c:when test="${league == 'SPL' }">
-							<img src="/images/le_spl.png" alt="..." class="img-thumbnail"> 라리가 경기 일정
-					</c:when>
-						<c:when test="${league == 'IPL' }">
-							<img src="/images/le_ipl.png" alt="..." class="img-thumbnail"> 세리아A 경기 일정
-					</c:when>
-						<c:when test="${league == 'GPL' }">
-							<img src="/images/le_gpl.png" alt="..." class="img-thumbnail"> 분데스리가 경기 일정
-					</c:when>
-						<c:when test="${league == 'FPL' }">
-							<img src="/images/le_fpl.png" alt="..." class="img-thumbnail"> 리그1 경기 일정
-					</c:when>
-						<c:when test="${league == 'UCL' }">
-							<img src="/images/le_ucl.png" alt="..." class="img-thumbnail"> 챔피언스리그 경기 일정
-					</c:when>
-						<c:otherwise>
-							<img src="/images/le_epl.png" alt="..." class="img-thumbnail"> 프리미어리그 경기 일정
-					</c:otherwise>
-					</c:choose></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="match" begin="0" end="10" items="${match_list}"
-				varStatus="status">
-				<tr>
-					<td class="font-weight-bold" colspan="2"
-						style="text-overflow: ellipsis; overflow: hidden;"><a
-						href="#"> <c:choose>
-								<c:when test="${match.result == 1}">
-					${match.home_name}
-					<span class="font-weight-light"> VS ${match.away_name} </span>
-								</c:when>
-								<c:when test="${match.result == 2}">
-									<span class="font-weight-light">${match.home_name} VS </span> 
-					${match.away_name}
-					</c:when>
-								<c:otherwise>
-									<span class="font-weight-light">${match.home_name} VS
-										${match.away_name}</span>
-								</c:otherwise>
-							</c:choose>
-					</a></td>
-				</tr>
-				<tr class="table table-borderless">
-					<td class="font-weight-light text-dark" style="white-space: nowrap">${match.m_time}</td>
-
-					<c:choose>
-						<c:when test="${match.result == 1}">
-							<td class="font-weight-bold font-italic text-primary"
-								style="text-overflow: ellipsis; overflow: hidden;" align="right">WIN
-								(${match.score})</td>
-						</c:when>
-						<c:when test="${match.result == 2}">
-							<td class="font-weight-bold font-italic text-danger"
-								style="text-overflow: ellipsis; overflow: hidden;" align="right">LOSE
-								(${match.score})</td>
-						</c:when>
-						<c:otherwise>
-							<td class="font-weight-bold font-italic text-success"
-								style="text-overflow: ellipsis; overflow: hidden;" align="right">DRAW
-								(${match.score})</td>
-						</c:otherwise>
-					</c:choose>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary">
+            <c:choose>
+				<c:when test="${league == 'SPL' }">
+					<a href="/result.spn?league=SPL"><img src="/images/le_spl.png" alt="..." class="img-thumbnail"> 라리가 경기결과</a>
+				</c:when>
+				<c:when test="${league == 'IPL' }">
+					<a href="/result.spn?league=IPL"><img src="/images/le_ipl.png" alt="..." class="img-thumbnail"> 세리에A 경기결과</a>
+				</c:when>
+				<c:when test="${league == 'GPL' }">
+					<a href="/result.spn?league=GPL"><img src="/images/le_gpl.png" alt="..." class="img-thumbnail"> 분데스리가 경기결과</a>
+				</c:when>
+				<c:when test="${league == 'FPL' }">
+					<a href="/result.spn?league=FPL"><img src="/images/le_fpl.png" alt="..." class="img-thumbnail"> 리그1 경기결과</a>
+				</c:when>
+				<c:when test="${league == 'UCL' }">
+					<a href="/result.spn?league=UCL"><img src="/images/le_ucl.png" alt="..." class="img-thumbnail"> 챔피언스리그 경기결과</a>
+				</c:when>
+				<c:otherwise>
+					<a href="/result.spn?league=EPL"><img src="/images/le_epl.png" alt="..." class="img-thumbnail"> 프리미어리그 경기결과</a>
+				</c:otherwise>
+			</c:choose>
+      </h6>
+      <c:forEach var="match" begin="0" end="${size}" items="${match_list}" varStatus="status">
+        <div class="media text-muted pt-3">        
+        <div class="media-body pb-2 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between mb-3 align-items-center w-100">
+        	<c:choose>
+        		<c:when test="${match.result == 1}">
+	        	<a href="/matchDetail.spn?match_id=${match.match_id}" class="text-primary"><strong>${match.home_name}</strong>> VS ${match.away_name}</a>
+        		</c:when>
+        		<c:when test="${match.result == 2}">
+        		<a href="/matchDetail.spn?match_id=${match.match_id}" class="text-primary">${match.home_name} VS <span class="font-weight-bold">${match.away_name}</span></a>
+        		</c:when>
+        		<c:otherwise>
+        		<a href="/matchDetail.spn?match_id=${match.match_id}" class="text-primary">${match.home_name} VS ${match.away_name}</a>
+        		</c:otherwise>
+        	</c:choose>
+        	
+        	<c:choose>
+				<c:when test="${match.result == 1}">
+					<span class="font-weight-bold font-italic text-primary"
+						style="text-overflow: ellipsis; overflow: hidden;" align="right">WIN
+						(${match.score})</span>
+				</c:when>
+				<c:when test="${match.result == 2}">
+					<span class="font-weight-bold font-italic text-danger"
+						style="text-overflow: ellipsis; overflow: hidden;" align="right">LOSE
+						(${match.score})</span>
+				</c:when>
+				<c:otherwise>
+					<span class="font-weight-bold font-italic text-success"
+						style="text-overflow: ellipsis; overflow: hidden;" align="right">DRAW
+						(${match.score})</span>
+				</c:otherwise>
+			</c:choose>
+			
+          </div>          
+          <span class="text-dark">${match.m_time}</span>          
+        </div>
+      	</div>
+      </c:forEach>      
+      <small class="d-block text-right mt-3">
+        <a href="/match.spn">리그별 경기 일정</a>
+      </small>
+    </div>
+    
 	<hr>
 	<p>
 	<footer class="text-muted">

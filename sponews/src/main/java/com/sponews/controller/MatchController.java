@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.sponews.service.MatchService;
 import com.sponews.utils.CommonUtils;
 
+
+
 @Controller
 public class MatchController {
 
@@ -66,8 +68,11 @@ public class MatchController {
 			month = CommonUtils.nowMonth();
 		}
 		
+		List<HashMap<String, Object>> matchList = matchService.getResultList(league, month);
+		
 		model.addAttribute("league", league);
-		model.addAttribute("match_list", matchService.getResultList(league, month));
+		model.addAttribute("match_list", matchList);
+		model.addAttribute("size", matchList.size());
 		model.addAttribute("month", month);
 		
 		return "result_list";

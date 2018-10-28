@@ -28,6 +28,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/match.spn">경기 일정</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/result.spn">경기 결과</a></li>
@@ -70,9 +71,9 @@
 			</c:otherwise>
 			</c:choose>
 			</p>
-	        <h1 class="jumbotron-heading text-danger">${match.home_name}</h1>
+	        <h4 class="jumbotron-heading font-weight-bold text-danger">${match.home_name}</h4>
 	        <p class="font-weight-bold text-danger">VS</p>
-	        <h1 class="jumbotron-heading text-danger">${match.away_name}</h1>
+	        <h4 class="jumbotron-heading font-weight-bold text-danger">${match.away_name}</h4>
 	        <c:choose>
 	        <c:when test="${match.total == 0}">
 	        	<p class="lead font-weight-bold text-primary">응원 현황 (승: 0% 무: 0% 패: 0%)</p>	        	
@@ -127,10 +128,7 @@
           <strong class="text-gray-dark"><a href="#" class="text-danger">${comment.story}</a></strong>          
         </div>
       	</div>
-      </c:forEach>
-      <small class="d-block text-right mt-3">
-        <a href="/match.spn">리그별 경기 일정</a>
-      </small>
+      </c:forEach>      
     </div>
 	
 	<hr>

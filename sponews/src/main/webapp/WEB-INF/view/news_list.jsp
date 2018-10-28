@@ -30,6 +30,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/match.spn">경기 일정</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/result.spn">경기 결과</a></li>

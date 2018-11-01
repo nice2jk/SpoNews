@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Spotech Login</title>
+    <title>Signin Template for Bootstrap</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -17,21 +17,21 @@
   <body>
   
 	<form>
-	  <h4 class="border-bottom border-gray pb-2 my-2 font-weight-bold text-danger text-center">로그인</h4>	
+	  <h4 class="border-bottom border-gray pb-2 my-2 font-weight-bold text-info text-center">회원가입</h4>	
 	  <div class="form-group mx-5 mt-2">
 	    <label for="exampleInputEmail1">Login ID</label>
 	    <input type="text" minlength="5" maxlength="12" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디 입력" autofocus required>
-	    <small id="emailHelp" class="form-text text-muted">ID Length has to be 5 to 12 strings.</small>
+	    <small id="emailHelp" class="form-text text-muted">ID Length has to be 5 to 12 strings</small>
 	  </div>
 	  <div class="form-group mx-5">
 	    <label for="exampleInputPassword1">Password</label>
 	    <input type="password" minlength="5" maxlength="12" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 입력" required>
 	  </div>
-	  <button type="submit" class="btn btn-sm col-5 ml-5 mr-1 btn-primary">Login</button>
+	  <button type="submit" class="btn btn-sm col-5 ml-5 mr-1 btn-primary">Sign-up</button>
 	</form>
 	
 	<div class="container p-5">
-      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary text-center"><a href="/join.spn" class="text-info">회원 가입</a> | <a href="#" class="text-dark">비밀번호 찾기</a></h6>      
+      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary text-center"><a href="#" class="text-info">회원 가입</a> | <a href="#" class="text-dark">비밀번호 찾기</a></h6>      
     </div>
 	
 	<hr>

@@ -49,9 +49,9 @@
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary">최신 경기 일정</h6>
       <c:forEach var="match" begin="0" end="10" items="${match_list}" varStatus="status">
-        <div class="media text-muted pt-3">        
-        <div class="media-body pb-2 mb-0 small lh-125 border-bottom border-gray">
-          <div class="d-flex justify-content-between mb-3 align-items-center w-100">
+        <div class="media text-muted pt-2">
+        <div class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between mb-2 small align-items-center w-100">
             <c:choose>
 				<c:when test="${match.league == 'SPL' }">
 					<a href="/match.spn?league=SPL"><img src="/images/le_spl.png" alt="..." class="img-thumbnail"> 라리가</a>

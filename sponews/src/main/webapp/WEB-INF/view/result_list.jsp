@@ -91,11 +91,11 @@
       </h6>
       <c:forEach var="match" begin="0" end="${size}" items="${match_list}" varStatus="status">
         <div class="media text-muted pt-3">        
-        <div class="media-body pb-2 mb-0 small lh-125 border-bottom border-gray">
+        <div class="media-body pb-2 mb-0 lh-125 border-bottom border-gray">
           <div class="d-flex justify-content-between mb-3 align-items-center w-100">
         	<c:choose>
         		<c:when test="${match.result == 1}">
-	        	<a href="/matchDetail.spn?match_id=${match.match_id}" class="text-primary"><strong>${match.home_name}</strong>> VS ${match.away_name}</a>
+	        	<a href="/matchDetail.spn?match_id=${match.match_id}" class="text-primary"><strong>${match.home_name}</strong> VS ${match.away_name}</a>
         		</c:when>
         		<c:when test="${match.result == 2}">
         		<a href="/matchDetail.spn?match_id=${match.match_id}" class="text-primary">${match.home_name} VS <span class="font-weight-bold">${match.away_name}</span></a>
@@ -121,10 +121,9 @@
 						style="text-overflow: ellipsis; overflow: hidden;" align="right">DRAW
 						(${match.score})</span>
 				</c:otherwise>
-			</c:choose>
-			
+			</c:choose>			
           </div>          
-          <span class="text-dark">${match.m_time}</span>          
+          <span class="text-dark small">${match.m_time}</span>          
         </div>
       	</div>
       </c:forEach>      
@@ -132,6 +131,28 @@
         <a href="/match.spn">리그별 경기 일정</a>
       </small>
     </div>
+    
+   	<nav aria-label="pagination">
+	  <ul class="pagination justify-content-center">
+	  	<c:choose>
+	  		<c:when test="${(month-1)%100 == 0 }">
+	  			<li class="page-item"><a class="page-link" href="/result.spn?league=${league}&month=${month-100+11}" tabindex="-1">< ${month-100+11}</a></li>
+	  		</c:when>
+	  		<c:otherwise>
+				<li class="page-item"><a class="page-link" href="/result.spn?league=${league}&month=${month-1}">< ${month-1}</a></li>
+	  		</c:otherwise>
+	  	</c:choose>
+	    <li class="page-item disabled mr-2 ml-2"><a class="page-link" href="#">${month}</a></li>
+	    <c:choose>
+	    	<c:when test="${(month+1)%100 > 12 }">
+	    		<li class="page-item"><a class="page-link" href="/result.spn?league=${league}&month=${month+100-11}">${month+100-11} ></a></li>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<li class="page-item"><a class="page-link" href="/result.spn?league=${league}&month=${month+1}">${month+1} ></a></li>
+	    	</c:otherwise>
+	    </c:choose>	    
+	  </ul>
+	</nav>
     
 	<hr>
 	<p>

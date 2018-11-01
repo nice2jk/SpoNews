@@ -18,11 +18,11 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value="/login.spn", method=RequestMethod.GET)
+	@RequestMapping(value="/join.spn", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public String login(Model model) {
-		System.out.println("login");
+	public String join(Model model) {
+		System.out.println("join");
 				
-		return "login";
+		return "join";
 	}
 }

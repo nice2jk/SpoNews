@@ -19,6 +19,10 @@ public class MatchService {
 		return matchDAO.getLatestMatchList(month);
 	}
 	
+	public List<HashMap<String, Object>> getMatchList(String league) {
+		return matchDAO.getMatchList(league);
+	}
+	
 	public List<HashMap<String, Object>> getMatchList(String league, int month) {
 		return matchDAO.getMatchList(league, month);
 	}

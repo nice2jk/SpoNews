@@ -3,6 +3,7 @@ com\sponews\controller\MatchController.class
 com\sponews\service\NewsService$1.class
 com\sponews\service\NewsService.class
 com\sponews\dao\MatchDAO.class
+com\sponews\interceptor\LoginCheckInterceptor.class
 com\sponews\controller\NewsController.class
 com\sponews\controller\MainController.class
 com\sponews\controller\UserController.class
@@ -12,4 +13,8 @@ com\sponews\utils\CommonUtils.class
 com\sponews\model\MatchVO.class
 com\sponews\utils\HttpUtils.class
 com\sponews\model\NewsVO.class
+com\sponews\controller\LoginController.class
 com\sponews\controller\BoardController.class
+com\sponews\dao\UserDAO.class
+com\sponews\dao\LoginDAO.class
+com\sponews\service\UserService.class

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 public interface MatchDAO {
 
 	public List<HashMap<String, Object>> getLatestMatchList(@Param("month") int month);
+	public List<HashMap<String, Object>> getMatchList(@Param("league") String league);
 	public List<HashMap<String, Object>> getMatchList(@Param("league") String league, @Param("month") int month);
 	public List<HashMap<String, Object>> getResultList(@Param("league") String league, @Param("month") int month);
 	public HashMap<String, Object> getMatch(@Param("match_id") int matchId);

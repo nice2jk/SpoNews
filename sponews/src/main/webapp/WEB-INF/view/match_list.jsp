@@ -93,28 +93,6 @@
       </small>
     </div>	
 	
-	<nav aria-label="pagination">
-	  <ul class="pagination justify-content-center">
-	  	<c:choose>
-	  		<c:when test="${(month-1)%100 == 0 }">
-	  			<li class="page-item"><a class="page-link" href="/match.spn?league=${league}&month=${month-100+11}" tabindex="-1">< ${month-100+11}</a></li>
-	  		</c:when>
-	  		<c:otherwise>
-				<li class="page-item"><a class="page-link" href="/match.spn?league=${league}&month=${month-1}">< ${month-1}</a></li>
-	  		</c:otherwise>
-	  	</c:choose>
-	    <li class="page-item disabled mr-2 ml-2"><a class="page-link" href="#">${month}</a></li>
-	    <c:choose>
-	    	<c:when test="${(month+1)%100 > 12 }">
-	    		<li class="page-item"><a class="page-link" href="/match.spn?league=${league}&month=${month+100-11}">${month+100-11} ></a></li>
-	    	</c:when>
-	    	<c:otherwise>
-	    		<li class="page-item"><a class="page-link" href="/match.spn?league=${league}&month=${month+1}">${month+1} ></a></li>
-	    	</c:otherwise>
-	    </c:choose>	    
-	  </ul>
-	</nav>
-	
 	<hr>
 	<p>
 	<footer class="text-muted">

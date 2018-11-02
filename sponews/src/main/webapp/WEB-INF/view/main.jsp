@@ -29,7 +29,14 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
+			<c:choose>
+				<c:when test="${sessionScope.login_result == 1}">
+					<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> ${sessionScope.login_user.user_id} 1</a>
+				</c:when>
+				<c:otherwise>
+					<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
+				</c:otherwise>			
+			</c:choose>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/match.spn">경기 일정</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/result.spn">경기 결과</a></li>

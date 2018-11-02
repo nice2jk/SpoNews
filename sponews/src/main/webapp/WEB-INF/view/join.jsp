@@ -16,18 +16,25 @@
 
   <body>
   
-	<form>
-	  <h4 class="border-bottom border-gray pb-2 my-2 font-weight-bold text-info text-center">회원가입</h4>	
-	  <div class="form-group mx-5 mt-2">
-	    <label for="exampleInputEmail1">Login ID</label>
-	    <input type="text" minlength="5" maxlength="12" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디 입력" autofocus required>
-	    <small id="emailHelp" class="form-text text-muted">ID Length has to be 5 to 12 strings</small>
+  	<h4 class="border-bottom border-gray pb-2 my-2 font-weight-bold text-info text-center">회원가입</h4>
+	<form class="my-2 mx-5 justify-content-center">
+	  <div class="form-group">
+	    <label for="id1">Login Id</label>
+	    <input type="text" minlength="5" maxlength="12" class="form-control" id="id1" aria-describedby="idHelp" placeholder="Enter Id">
+	    <small id="idHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	  </div>
-	  <div class="form-group mx-5">
-	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" minlength="5" maxlength="12" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 입력" required>
+	  <div class="form-group">
+	    <label for="pw1">Password</label>
+	    <input type="password" minlength="5" maxlength="12" class="form-control" id="pw1" placeholder="Password">
 	  </div>
-	  <button type="submit" class="btn btn-sm col-5 ml-5 mr-1 btn-primary">Sign-up</button>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    <label class="form-check-label" for="exampleCheck1">로그인 유지</label>
+	  </div>
+	  <div class="form-inline justify-content-between">
+		  <button type="submit" class="btn btn-primary">로그인</button>
+		  <button type="submit" class="btn btn-info">회원가입</button>
+	  </div>
 	</form>
 	
 	<div class="container p-5">

@@ -31,33 +31,47 @@ public class LoginController {
 	@RequestMapping(value="/login.spn", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public String login(
-			@RequestParam(value="id", required=false) String id,
+			@RequestParam(value="id", required=false) String id, 
 			@RequestParam(value="pw", required=false) String pw,
 			HttpServletRequest request, HttpSession session,
 			Model model) {
 		System.out.println("login | " + id);
 		
-		if(id == null) {
+		if(id == null || pw == null) {
 			return "login";
 		}
 
 		HashMap<String, String> userInfo = userService.getLogin(id, pw);
 		System.out.println(userInfo);
 		if(userInfo != null) {
-			System.out.println("login ok");
 			userInfo.remove("user_pw");
-			session.setAttribute("login_user", userInfo);
-			session.setAttribute("login_result", 1);			
+			session.setAttribute("login_user", userInfo);						
 		} else {
-			System.out.println("login no");			
-			session.setAttribute("login_result", 0);			
 			model.addAttribute("user_id", id);
-			model.addAttribute("login_result", 0);
+			model.addAttribute("result", "다시 로그인 해 주세요!");
+			
 			return "login";
 		}
 		
 		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList(CommonUtils.nowMonth());
-		model.addAttribute("match_list", matchList);		
+		model.addAttribute("match_list", matchList);
+		
+		return "main";
+	}
+	
+	@RequestMapping(value="/logout.spn", method=RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String logout(
+			HttpServletRequest request, HttpSession session,
+			Model model) {
+		System.out.println("logout");
+		
+		if(session.getAttribute("login_user") != null) {
+			session.removeAttribute("login_user");
+		}
+		
+		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList(CommonUtils.nowMonth());
+		model.addAttribute("match_list", matchList);
 		
 		return "main";
 	}
@@ -67,9 +81,41 @@ public class LoginController {
 	public String join(
 			@RequestParam(value="id", required=false) String id,
 			@RequestParam(value="pw", required=false) String pw,
+			@RequestParam(value="nm", required=false) String nm,
+			HttpSession session,
 			Model model) {
-		System.out.println("join");
-				
-		return "join";
+		System.out.println("join | " + id + " | " + nm);
+		
+		if(id == null || pw == null || nm == null) {
+			return "join";
+		}
+		
+		if(userService.setJoin(id, pw, nm) == false) {
+			model.addAttribute("result", "중복 ID가 있습니다.");
+			model.addAttribute("user_id", id);
+			
+			return "join";
+		}
+		
+		if(session.getAttribute("login_user") != null) {
+			session.removeAttribute("login_user");
+		}
+		
+		HashMap<String, String> userInfo = userService.getLogin(id, pw);
+		System.out.println(userInfo);
+		if(userInfo != null) {
+			userInfo.remove("user_pw");
+			session.setAttribute("login_user", userInfo);						
+		} else {
+			model.addAttribute("user_id", id);
+			model.addAttribute("result", "다시 로그인 해 주세요!");
+			
+			return "login";
+		}
+		
+		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList(CommonUtils.nowMonth());
+		model.addAttribute("match_list", matchList);
+		
+		return "main";
 	}
 }

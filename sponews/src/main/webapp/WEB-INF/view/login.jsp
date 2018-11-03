@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html lang="en">
   <head>
@@ -19,8 +20,16 @@
 	<form class="border-bottom border-gray py-3 my-2 mx-5 justify-content-center" action="/login.spn" method="get">
 	  <div class="form-group">
 	    <label for="id1">Login Id</label>
-	    <input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id">
-	    <small id="idHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    <c:choose>
+	    	<c:when test="${result != null}">
+		    	<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id" value="${user_id}">
+	    		<small id="idHelp" class="form-text text-danger">${result}</small>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id">
+	    		<small id="idHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    	</c:otherwise>
+	    </c:choose>	    
 	  </div>
 	  <div class="form-group">
 	    <label for="pw1">Password</label>
@@ -30,14 +39,11 @@
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
 	    <label class="form-check-label" for="exampleCheck1">로그인 유지</label>
 	  </div>
-	  <div class="form-inline justify-content-between">
-		  <button type="submit" class="btn btn-primary">로그인</button>
-		  <button type="submit" class="btn btn-info">회원가입</button>
-	  </div>
+	  <button type="submit" class="btn btn-primary">로그인</button>
 	</form>
 	
 	<div class="container p-5">
-      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary text-center"><a href="#" class="text-dark">비밀번호 찾기</a></h6>      
+      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary text-center"><a href="/join.spn" class="text-info">회원가입</a> | <a href="#" class="text-dark">비밀번호 찾기</a></h6>      
     </div>
 	
 	<hr>

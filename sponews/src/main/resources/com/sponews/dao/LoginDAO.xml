@@ -3,11 +3,11 @@
 
 <mapper namespace="com.sponews.dao.LoginDAO">
 	<select id="getLogin" resultType="java.util.HashMap">
-		SELECT id, user_id, user_pw, user_type FROM user WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+		SELECT id, user_id, user_pw, user_type, user_nm FROM user WHERE user_id = #{user_id} AND user_pw = #{user_pw}
 	</select>
 	
-	<insert id="setLogin">
-		INSERT INTO user (user_id, user_pw) VALUES (#{user_id}, #{user_pw});
+	<insert id="setJoin">
+		INSERT INTO user (user_id, user_pw, user_nm) VALUES (#{user_id}, #{user_pw}, #{user_nm});
 	</insert>
 	
 </mapper>

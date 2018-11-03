@@ -30,11 +30,11 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<c:choose>
-				<c:when test="${sessionScope.login_result == 1}">
-					<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> ${sessionScope.login_user.user_id} 1</a>
+				<c:when test="${sessionScope.login_user != null}">
+					<a href="#" class="font-weight-bold text-info">${sessionScope.login_user.user_id}</a><a href="/logout.spn"><img src="/images/logout.png" alt="..." class="img-thumbnail ml-3"></a>
 				</c:when>
 				<c:otherwise>
-					<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
+					<a href="/login.spn" class="font-weight-bold text-warning"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
 				</c:otherwise>			
 			</c:choose>
 			<ul class="navbar-nav mr-auto">
@@ -81,7 +81,14 @@
 			</c:choose>
 			<span class="text-success">${match.m_time}</span>            
           </div>
-          <strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-danger">${match.home_name} VS ${match.away_name}</a></strong>          
+          <c:choose>
+          	<c:when test="${match.st_cd == 0}">
+          		<strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-muted">${match.home_name} VS ${match.away_name}</a><img src="/images/match.png" alt="..." class="ml-2 img-thumbnail"></strong>
+          	</c:when>
+          	<c:otherwise>
+          		<strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-danger">${match.home_name} VS ${match.away_name}</a></strong>
+          	</c:otherwise>
+          </c:choose>
         </div>
       	</div>
       </c:forEach>      

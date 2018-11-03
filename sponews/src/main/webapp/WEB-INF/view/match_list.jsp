@@ -27,7 +27,14 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<a href="/login.spn"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
+			<c:choose>
+				<c:when test="${sessionScope.login_user != null}">
+					<a href="#" class="font-weight-bold text-info">${sessionScope.login_user.user_id}</a><a href="/logout.spn"><img src="/images/logout.png" alt="..." class="img-thumbnail ml-3"></a>
+				</c:when>
+				<c:otherwise>
+					<a href="/login.spn" class="font-weight-bold text-warning"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
+				</c:otherwise>			
+			</c:choose>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/match.spn">경기 일정</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/result.spn">경기 결과</a></li>

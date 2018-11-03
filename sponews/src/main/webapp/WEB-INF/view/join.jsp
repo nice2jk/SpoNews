@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html lang="en">
   <head>
@@ -20,26 +21,27 @@
 	<form class="my-2 mx-5 justify-content-center">
 	  <div class="form-group">
 	    <label for="id1">Login Id</label>
-	    <input type="text" minlength="5" maxlength="12" class="form-control" id="id1" aria-describedby="idHelp" placeholder="Enter Id">
-	    <small id="idHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    <c:choose>
+	    	<c:when test="${result != null }">
+		    	<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id"  value="${user_id}">
+	    		<small id="idHelp" class="form-text text-danger">${result}</small>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id">
+	    		<small id="idHelp" class="form-text text-muted">항목 모두 입력해 주세요.</small>
+	    	</c:otherwise>
+	    </c:choose>	    
 	  </div>
 	  <div class="form-group">
 	    <label for="pw1">Password</label>
-	    <input type="password" minlength="5" maxlength="12" class="form-control" id="pw1" placeholder="Password">
+	    <input type="password" minlength="5" maxlength="12" class="form-control" name="pw" id="pw1" placeholder="Password">
 	  </div>
-	  <div class="form-group form-check">
-	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-	    <label class="form-check-label" for="exampleCheck1">로그인 유지</label>
+	  <div class="form-group">
+	    <label for="nm1">Name</label>
+	    <input type="text" minlength="5" maxlength="12" class="form-control" name="nm" id="nm1" placeholder="User Name">
 	  </div>
-	  <div class="form-inline justify-content-between">
-		  <button type="submit" class="btn btn-primary">로그인</button>
-		  <button type="submit" class="btn btn-info">회원가입</button>
-	  </div>
+	  <button type="submit" class="btn btn-outline-info mt-3">회원가입</button>	  
 	</form>
-	
-	<div class="container p-5">
-      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary text-center"><a href="#" class="text-info">회원 가입</a> | <a href="#" class="text-dark">비밀번호 찾기</a></h6>      
-    </div>
 	
 	<hr>
 	<p>

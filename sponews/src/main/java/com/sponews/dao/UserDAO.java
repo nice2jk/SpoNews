@@ -1,5 +1,10 @@
 package com.sponews.dao;
 
-public class UserDAO {
+import java.util.HashMap;
 
+import org.apache.ibatis.annotations.Param;
+
+public interface UserDAO {
+
+	public HashMap<String, String> getUser(@Param("user_id") String id);
 }

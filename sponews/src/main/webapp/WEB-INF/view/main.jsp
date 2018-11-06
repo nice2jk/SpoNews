@@ -31,7 +31,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<c:choose>
 				<c:when test="${sessionScope.login_user != null}">
-					<a href="#" class="font-weight-bold text-info">${sessionScope.login_user.user_id}</a><a href="/logout.spn"><img src="/images/logout.png" alt="..." class="img-thumbnail ml-3"></a>
+					<a href="#" class="font-weight-bold text-info">${sessionScope.login_user.user_nm}</a><a href="/logout.spn"><img src="/images/logout.png" alt="..." class="img-thumbnail ml-3"></a>
 				</c:when>
 				<c:otherwise>
 					<a href="/login.spn" class="font-weight-bold text-warning"><img src="/images/login.png" alt="..." class="img-thumbnail mr-2"> 로그인</a>
@@ -43,9 +43,9 @@
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">리그 순위</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">팁스터</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/news.spn">축구 뉴스</a></li>
-				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/board.spn">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">Spotech</a></li>
-			</ul>			
+			</ul>
 		</div>
 	</nav>
 	
@@ -144,8 +144,7 @@
 			<p>Copyrightⓒ Sponews</p>
 			<p>All Rights Reserved.</p>
 		</div>
-	</footer>
-	
+	</footer>	
 		
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

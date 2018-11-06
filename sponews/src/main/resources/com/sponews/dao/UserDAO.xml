@@ -5,4 +5,8 @@
 	<select id="getUser" resultType="java.util.HashMap">
 		SELECT id, user_id, user_pw, user_type, user_nm FROM user WHERE user_id = #{user_id}
 	</select>
+	
+	<select id="getUsers">
+		
+	</select>
 </mapper>

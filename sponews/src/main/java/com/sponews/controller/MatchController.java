@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.sponews.service.MatchService;
 import com.sponews.utils.CommonUtils;
 
-
-
 @Controller
 public class MatchController {
 

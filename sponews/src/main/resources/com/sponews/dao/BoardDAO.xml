@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sponews.dao.BoardDAO">
+
+	<select id="getArticles" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT A.aid, A.atitle, A.vcount, A.ctime, COUNT(B.cid) AS count
+		FROM board AS A LEFT OUTER JOIN comment AS B ON A.aid = B.aid		
+		GROUP BY A.aid 
+		ORDER BY A.aid DESC		
+		<choose>
+			<when test="offset != null and offset > 0">
+				LIMIT #{offset}, 20
+			</when>
+			<otherwise>
+				LIMIT 0, 20
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="setArticle" parameterType="java.util.HashMap" useGeneratedKeys="true"  keyColumn="aid">
+		INSERT INTO board (user_id, atitle, abody)
+		VALUES (#{userId}, #{atitle}, #{abody})
+	</insert>
+	
+	<select id="getArticle" resultType="java.util.HashMap">
+		SELECT aid, atitle, abody, vcount, ctime 
+		FROM board 
+		WHERE aid = #{aid}
+	</select>
+	
+	<update id="updateViewCount">
+		UPDATE board SET vcount = vcount + 1 WHERE aid = #{aid}
+	</update>
+</mapper>

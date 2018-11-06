@@ -79,16 +79,26 @@ public class LoginController {
 	@RequestMapping(value="/join.spn", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public String join(
+			HttpSession session,
+			Model model) {
+		System.out.println("join");
+		
+		if(session.getAttribute("login_user") != null) {
+			session.removeAttribute("login_user");
+		}
+		
+		return "join";
+	}
+	
+	@RequestMapping(value="/join.done", method=RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String joinDone(
 			@RequestParam(value="id", required=false) String id,
 			@RequestParam(value="pw", required=false) String pw,
 			@RequestParam(value="nm", required=false) String nm,
 			HttpSession session,
 			Model model) {
-		System.out.println("join | " + id + " | " + nm);
-		
-		if(id == null || pw == null || nm == null) {
-			return "join";
-		}
+		System.out.println("join done | " + id + " | " + nm);
 		
 		if(userService.setJoin(id, pw, nm) == false) {
 			model.addAttribute("result", "중복 ID가 있습니다.");

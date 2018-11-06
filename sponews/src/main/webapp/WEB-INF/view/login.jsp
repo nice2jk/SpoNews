@@ -22,21 +22,21 @@
 	    <label for="id1">Login Id</label>
 	    <c:choose>
 	    	<c:when test="${result != null}">
-		    	<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id" value="${user_id}">
+		    	<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id" value="${user_id}" required>
 	    		<small id="idHelp" class="form-text text-danger">${result}</small>
 	    	</c:when>
 	    	<c:otherwise>
-	    		<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id">
+	    		<input type="text" minlength="5" maxlength="12" class="form-control" name="id" id="id1" aria-describedby="idHelp" placeholder="Enter Id" required>
 	    		<small id="idHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	    	</c:otherwise>
 	    </c:choose>	    
 	  </div>
 	  <div class="form-group">
 	    <label for="pw1">Password</label>
-	    <input type="password" minlength="5" maxlength="12" class="form-control" name="pw" id="pw1" placeholder="Password">
+	    <input type="password" minlength="5" maxlength="12" class="form-control" name="pw" id="pw1" placeholder="Password" required>
 	  </div>
 	  <div class="form-group form-check">
-	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1" disabled>
 	    <label class="form-check-label" for="exampleCheck1">로그인 유지</label>
 	  </div>
 	  <button type="submit" class="btn btn-primary">로그인</button>

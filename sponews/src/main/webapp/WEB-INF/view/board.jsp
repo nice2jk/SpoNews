@@ -63,7 +63,7 @@
             <span class="font-weight-bold">${at.aid}<img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${at.vcount}]<img src="/images/reply.png" alt="..." class="img-thumbnail mx-2">[${at.count}]</span>
 			<span class="text-success">${at.ctime}</span>
           </div>
-          <strong style="text-overflow: ellipsis; overflow: hidden;"><a href="/article?aid=${at.aid}" class="text-danger">${at.atitle}</a></strong>          
+          <strong style="text-overflow: ellipsis; overflow: hidden;"><a href="/article.spn?aid=${at.aid}" class="text-danger">${at.atitle}</a></strong>          
         </div>
       	</div>
       </c:forEach>

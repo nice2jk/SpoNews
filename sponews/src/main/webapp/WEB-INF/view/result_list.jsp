@@ -49,7 +49,7 @@
 				<li class="nav-item"><a class="nav-link font-weight-bold"
 					href="/news.spn">축구 뉴스</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold"
-					href="#">커뮤니티</a></li>
+					href="/board.spn">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold"
 					href="#">Spotech</a></li>
 			</ul>

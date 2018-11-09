@@ -44,7 +44,7 @@
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">리그 순위</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">팁스터</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/news.spn">축구 뉴스</a></li>
-				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/board.spn">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">Spotech</a></li>
 			</ul>			
 		</div>

@@ -15,8 +15,8 @@ public class MatchService {
 	@Autowired
 	private MatchDAO matchDAO;
 	
-	public List<HashMap<String, Object>> getLatestMatchList(int month) {
-		return matchDAO.getLatestMatchList(month);
+	public List<HashMap<String, Object>> getLatestMatchList() {
+		return matchDAO.getLatestMatchList();
 	}
 	
 	public List<HashMap<String, Object>> getMatchList(String league) {

@@ -18,7 +18,7 @@
 		</choose>
 	</select>
 	
-	<insert id="setArticle" parameterType="java.util.HashMap" useGeneratedKeys="true"  keyColumn="aid">
+	<insert id="setArticle" parameterType="java.util.HashMap" useGeneratedKeys="true"  keyProperty="aid">
 		INSERT INTO board (user_id, atitle, abody)
 		VALUES (#{userId}, #{atitle}, #{abody})
 	</insert>

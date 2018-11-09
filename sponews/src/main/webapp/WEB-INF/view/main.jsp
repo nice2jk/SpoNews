@@ -98,37 +98,18 @@
     </div>
 
     <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-danger">팁스터 순위 (Coming Soon!)</h6>
-      <div class="media text-muted pt-3">
-        <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <div class="d-flex justify-content-between align-items-center w-100">
-            <strong class="text-gray-dark">홍길동</strong>
-            <a href="#">상세 정보</a>
-          </div>
-          <span class="d-block">@팁스터 정보</span>
-        </div>
-      </div>
-      <div class="media text-muted pt-3">
-        <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <div class="d-flex justify-content-between align-items-center w-100">
-            <strong class="text-gray-dark">대통령</strong>
-            <a href="#">상세 정보</a>
-          </div>
-          <span class="d-block">@팁스터 정보</span>
-        </div>
-      </div>
-      <div class="media text-muted pt-3">
-        <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <div class="d-flex justify-content-between align-items-center w-100">
-            <strong class="text-gray-dark">잘하자</strong>
-            <a href="#">상세 정보</a>
-          </div>
-          <span class="d-block">@팁스터 정보</span>
-        </div>
-      </div>
+      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-danger">최신 팁 정보!</h6>
+      <c:forEach var="tip" begin="0" end="5" items="${tip_list}" varStatus="status">
+           <div class="media  pt-2">
+	        <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+	          <div class="d-flex justify-content-between align-items-center w-100">
+	            <strong class="text-info">${tip.t_title} | ${tip.user_nm} | ${tip.bet}</strong>
+	            <a href="#">상세 정보</a>
+	          </div>
+	          <strong class="d-block my-2">${tip.home_name} vs ${tip.away_name} (${tip.m_time })</strong>
+	        </div>
+	      </div>
+      </c:forEach>      
       <small class="d-block text-right mt-3">
         <a href="#">모든 팁스터 정보보기</a>
       </small>

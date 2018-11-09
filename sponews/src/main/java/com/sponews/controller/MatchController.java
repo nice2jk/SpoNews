@@ -33,11 +33,10 @@ public class MatchController {
 			month = CommonUtils.nowMonth();
 		}
 		
-		List<HashMap<String, Object>> matchList = matchService.getMatchList(league, month);
+		List<HashMap<String, Object>> matchList = matchService.getMatchList(league);
 		model.addAttribute("league", league);
 		model.addAttribute("match_list", matchList);
-		model.addAttribute("size", matchList.size());
-		model.addAttribute("month", month);
+		model.addAttribute("size", matchList.size());		
 		
 		return "match_list";
 	}

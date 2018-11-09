@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.sponews.service.MatchService;
 import com.sponews.service.UserService;
-import com.sponews.utils.CommonUtils;
 
 @Controller
 public class LoginController {
@@ -53,7 +52,7 @@ public class LoginController {
 			return "login";
 		}
 		
-		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList(CommonUtils.nowMonth());
+		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList();
 		model.addAttribute("match_list", matchList);
 		
 		return "main";
@@ -70,7 +69,7 @@ public class LoginController {
 			session.removeAttribute("login_user");
 		}
 		
-		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList(CommonUtils.nowMonth());
+		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList();
 		model.addAttribute("match_list", matchList);
 		
 		return "main";
@@ -123,7 +122,7 @@ public class LoginController {
 			return "login";
 		}
 		
-		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList(CommonUtils.nowMonth());
+		List<HashMap<String, Object>> matchList = matchService.getLatestMatchList();
 		model.addAttribute("match_list", matchList);
 		
 		return "main";

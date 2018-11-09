@@ -23,15 +23,13 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {		
 		HttpSession session = request.getSession();
 		
-		System.out.println("Login Interceptor");
-		
 		if(session.getAttribute("login_user") == null) {
 			response.sendRedirect(request.getContextPath() + "/login.spn");
 			return false;
 		}
 		
 		HashMap<String, String> sessionUser = (HashMap<String, String>) session.getAttribute("login_user");
-		HashMap<String, String> user = userService.getLogin(sessionUser.get("id"), sessionUser.get("pw"));
+		HashMap<String, String> user = userService.getLogin(sessionUser.get("user_id"), sessionUser.get("user_pw"));
 		if(user == null) {
 			session.removeAttribute("login_user");
 			response.sendRedirect(request.getContextPath() + "/login.spn");

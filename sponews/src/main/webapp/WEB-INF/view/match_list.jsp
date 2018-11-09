@@ -41,7 +41,7 @@
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">리그 순위</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">팁스터</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/news.spn">축구 뉴스</a></li>
-				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/board.spn">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">Spotech</a></li>
 			</ul>		
 		</div>
@@ -91,7 +91,15 @@
 			</c:choose>
 			<span class="text-success">${match.m_time}</span>            
           </div>
-          <a href="/matchDetail.spn?match_id=${match.match_id}" class="font-weight-bold text-danger">${match.home_name} VS ${match.away_name}</a>
+          <c:choose>
+          	<c:when test="${match.st_cd == 0}">
+	          	<a href="/matchDetail.spn?match_id=${match.match_id}" class="font-weight-bold text-muted">${match.home_name} VS ${match.away_name}</a>
+          	</c:when>
+          	<c:otherwise>
+          		<a href="/matchDetail.spn?match_id=${match.match_id}" class="font-weight-bold text-danger">${match.home_name} VS ${match.away_name}</a>
+          	</c:otherwise>
+          </c:choose>
+          
         </div>
       	</div>
       </c:forEach>      

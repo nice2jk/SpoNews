@@ -42,7 +42,7 @@
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">리그 순위</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">팁스터</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="/news.spn">축구 뉴스</a></li>
-				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link font-weight-bold" href="/board.spn">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link font-weight-bold" href="#">Spotech</a></li>
 			</ul>		
 		</div>
@@ -52,32 +52,35 @@
 	<img src="/images/org_logo.png" class="img-fluid" alt="Responsive image">
 	</div>	
 	
-	<form action="matchComment.spn" method="post">
-	    <section class="text-center bg-white">
-	      <div class="container">
-	      <br>
-	      	<p>
-	      	<c:choose>
-			<c:when test="${match.league == 'SPL' }">
-				<img src="/images/le_spl.png" alt="..." class="img-thumbnail"><strong class="text-dark">라리가</strong>
-			</c:when>
-			<c:when test="${match.league == 'IPL' }">
-				<img src="/images/le_ipl.png" alt="..." class="img-thumbnail"><strong class="text-dark">세리아A</strong>
-			</c:when>
-			<c:when test="${match.league == 'GPL' }">
-				<img src="/images/le_gpl.png" alt="..." class="img-thumbnail"><strong class="text-dark">분데스리가</strong> 
-			</c:when>
-			<c:when test="${match.league == 'FPL' }">
-				<img src="/images/le_fpl.png" alt="..." class="img-thumbnail"><strong class="text-dark">리그1</strong> 
-			</c:when>
-			<c:when test="${match.league == 'UCL' }">
-				<img src="/images/le_ucl.png" alt="..." class="img-thumbnail"><strong class="text-dark">챔피언스리그</strong> 
-			</c:when>
-			<c:otherwise>
-				<img src="/images/le_epl.png" alt="..." class="img-thumbnail"><strong class="text-dark">프리미어리그</strong> 
-			</c:otherwise>
+	<div class="my-3 p-3 bg-white">
+		<div class="d-flex justify-content-between mb-2 border-bottom border-gray align-items-center w-100">
+			<c:choose>
+				<c:when test="${match.league == 'SPL' }">
+					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_spl.png" alt="..." class="img-thumbnail mx-2">라리가<a href="/write.spn"></a></h6>
+				</c:when>
+				<c:when test="${match.league == 'IPL' }">
+					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_ipl.png" alt="..." class="img-thumbnail mx-2">세리아A<a href="/write.spn"></a></h6>
+				</c:when>
+				<c:when test="${match.league == 'GPL' }">
+					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_gpl.png" alt="..." class="img-thumbnail mx-2">분데스리가<a href="/write.spn"></a></h6> 
+				</c:when>
+				<c:when test="${match.league == 'FPL' }">
+					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_fpl.png" alt="..." class="img-thumbnail mx-2">리그1<a href="/write.spn"></a></h6> 
+				</c:when>
+				<c:when test="${match.league == 'UCL' }">
+					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_ucl.png" alt="..." class="img-thumbnail mx-2">챔피언스리그<a href="/write.spn"></a></h6> 
+				</c:when>
+				<c:otherwise>
+					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_epl.png" alt="..." class="img-thumbnail mx-2">프리미어리그<a href="/write.spn"></a></h6> 
+				</c:otherwise>
 			</c:choose>
-			</p>
+			<h6 class="pb-2 mb-0 font-weight-bold text-dark"><img src="/images/write.png" alt="..." class="img-thumbnail"> 팁쓰기</h6>
+		</div>
+	</div>
+	
+	<form action="matchComment.spn" method="post">
+	    <section class="text-center bg-white border-bottom border-gray pb-3 mx-3">
+	      <div class="container">	      
 	        <h4 class="jumbotron-heading font-weight-bold text-danger">${match.home_name}</h4>
 	        <p class="font-weight-bold text-danger">VS</p>
 	        <h4 class="jumbotron-heading font-weight-bold text-danger">${match.away_name}</h4>

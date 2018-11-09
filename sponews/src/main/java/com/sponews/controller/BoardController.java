@@ -26,7 +26,7 @@ public class BoardController {
 	@RequestMapping(value="/board.spn", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public String getArticles(
-			@RequestParam(value="month", required=true, defaultValue="0") int offset,
+			@RequestParam(value="offset", required=true, defaultValue="0") int offset,
 			Model model) {		
 		System.out.println("articles : " + offset);
 		
@@ -40,7 +40,7 @@ public class BoardController {
 	@RequestMapping(value="/write.spn", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public String write() {		
-		System.out.println("articles");
+		System.out.println("write");
 		
 		return "write";		
 	}
@@ -48,12 +48,10 @@ public class BoardController {
 	@RequestMapping (value = "/write.done", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	public String writeArticle(String atitle, String abody, 
-			HttpServletRequest request, HttpSession session) {
+			HttpServletRequest request, HttpSession session, Model model) {
 		System.out.println("write done");
 		
-		if(session.getAttribute("login_user") == null) {
-			return "write";
-		} else {
+		if(session.getAttribute("login_user") != null) {
 			@SuppressWarnings("unchecked")
 			String userId = ((HashMap<String, String>) session.getAttribute("login_user")).get("user_id");
 			System.out.println(userId);
@@ -62,16 +60,18 @@ public class BoardController {
 			requestMap.put("userId", userId);
 			requestMap.put("atitle", atitle);
 			requestMap.put("abody", abody);
-			boardService.setArticle(requestMap);
+			model.addAttribute("article", boardService.setArticle(requestMap));
+			
+			return "article";
 		}
 		
-		return "board";
+		return "write";
 	}
 	
-	@RequestMapping (value = "/article", method = RequestMethod.GET)
+	@RequestMapping (value = "/article.spn", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public String getArticle(@RequestParam(value="aid", required=true) int aid, Model model) {
-		System.out.println("getArticle GET : " + aid);
+		System.out.println("article : " + aid);
 		
 		HashMap<String, Object> article = boardService.getArticle(aid);
 		model.addAttribute("article", article);

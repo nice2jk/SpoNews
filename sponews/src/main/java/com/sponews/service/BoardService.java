@@ -28,6 +28,7 @@ public class BoardService {
 	public HashMap<String, Object> setArticle(HashMap<String, Object> requestMap) {
 		int articleId = boardDAO.setArticle(requestMap);
 		System.out.println(articleId + " | " + requestMap.get("aid"));
-		return null;
+		
+		return boardDAO.getArticle((long)requestMap.get("aid"));
 	}
 }

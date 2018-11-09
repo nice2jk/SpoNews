@@ -7,11 +7,7 @@
 	</select>
 	
 	<select id="getMatchList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS m_time, description, home_name, away_name, status, score FROM sway_match WHERE league = #{league} 
-		<if test="month != null">
-			AND match_mm = #{month}
-		</if>
-		AND status = 0 ORDER BY match_time ASC
+		SELECT match_id, league, match_mm, FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') AS m_time, description, home_name, away_name, IF(FROM_UNIXTIME(match_time, '%Y-%m-%d %H:%i') > NOW(), 1, 0) AS st_cd, status, score FROM sway_match WHERE league = #{league}	AND status = 0 ORDER BY match_time ASC
 	</select>
 	
 	<select id="getResultList" parameterType="java.util.HashMap" resultType="java.util.HashMap">

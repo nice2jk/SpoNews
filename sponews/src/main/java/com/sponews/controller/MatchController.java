@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.sponews.service.MatchService;
+import com.sponews.service.TipService;
 import com.sponews.utils.CommonUtils;
 
 @Controller
@@ -20,6 +21,9 @@ public class MatchController {
 
 	@Autowired
 	private MatchService matchService;
+	
+	@Autowired
+	private TipService tipService;
 	
 	@RequestMapping(value="/match.spn", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -48,7 +52,8 @@ public class MatchController {
 			Model model) {
 		System.out.println("getMatchDetail " + matchId);
 
-		model.addAttribute("match", matchService.getMatch(matchId));
+		model.addAttribute("match", matchService.getMatchWithComments(matchId));
+		model.addAttribute("tips", tipService.getTips(matchId));
 		
 		return "match_detail";
 	}

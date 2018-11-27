@@ -54,16 +54,51 @@
 	<img src="/images/org_logo.png" class="img-fluid" alt="Responsive image">
 	</div>
 
-	<div class="my-3 p-3 bg-white">
-		<h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><a href="/board.spn">[자유게시판]</a><a href="/write.spn"><img src="/images/write.png" alt="..." class="img-thumbnail mx-2"></a></h6>		
-		<h5 class="border-bottom border-gray py-2 my-3 font-weight-bold">${article.atitle}</h5>
-		<div class="d-flex justify-content-between py-2 mb-2 small align-items-center w-100 border-bottom border-gray">
-            <span class="font-weight-bold">${article.aid}<img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${article.vcount}]<img src="/images/reply.png" alt="..." class="img-thumbnail mx-2">[${article.count}]</span>
-			<span class="text-success">${article.ctime}</span>
-	    </div>
-		<p class="lead rounded shadow-sm small ">${article.abody}</p>
-		<button onclick="location.href='/board.spn'" class="btn btn-primary my-2">목록</button>		
-	</div>
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><a href="/board.spn">[자유게시판]</a><a href="/write.spn"><img src="/images/write.png" alt="..." class="img-thumbnail mx-2"></a></h6>
+      <c:forEach var="at" begin="0" end="20" items="${articles}" varStatus="status">
+        <div class="media text-muted pt-2">
+        <div class="media-body pb-2 mb-0 lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between mb-2 small align-items-center w-100">
+            <span class="font-weight-bold">${at.aid}<img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${at.vcount}]<img src="/images/reply.png" alt="..." class="img-thumbnail mx-2">[${at.count}]</span>
+			<span class="text-success">${at.ctime}</span>
+          </div>
+          <strong style="text-overflow: ellipsis; overflow: hidden;"><a href="/article.spn?aid=${at.aid}" class="text-danger">${at.atitle}</a></strong>          
+        </div>
+      	</div>
+      </c:forEach>
+    </div>
+	
+	<nav aria-label="pagination">
+	  <ul class="pagination justify-content-center">
+	  	<c:choose>
+	  		<c:when test="${offset == 0}">
+	  			<li class="page-item disabled">
+			      <a class="page-link" href="#" tabindex="-1">최신</a>
+			    </li>
+	  		</c:when>
+	  		<c:otherwise>
+		  		<c:choose>
+					<c:when test="${empty search }">
+						<li class="page-item"><a class="page-link" href="/articles?offset=${offset-20}">< 다음</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" href="/articles?offset=${offset-20}&search=${search}">< 다음</a></li>
+					</c:otherwise>
+		  		</c:choose>
+	  		</c:otherwise>
+	  	</c:choose>
+	    <li class="page-item disabled mr-2 ml-2"><a class="page-link" href="#">현재 페이지</a></li>
+	    <c:choose>
+	    	<c:when test="${empty search }">
+	    		<li class="page-item"><a class="page-link" href="/articles?offset=${offset+20}">이전 ></a></li>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<li class="page-item"><a class="page-link" href="/articles?offset=${offset+20}&search=${search}">이전 ></a></li>
+	    	</c:otherwise>
+	    </c:choose>	    
+	  </ul>
+	</nav>	
 		
 	<hr>
 	<p>

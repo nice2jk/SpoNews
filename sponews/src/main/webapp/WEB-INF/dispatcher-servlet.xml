@@ -19,12 +19,14 @@
 	<mvc:annotation-driven />
 	
 	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/se2/" mapping="/se2/**" />
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/write.spn" />
 			<mvc:mapping path="/article.spn" />
-			<mvc:mapping path="/matchComment.spn" />			
+			<mvc:mapping path="/tip_write.spn" />
+			<mvc:mapping path="/matchComment.spn" />
 			<bean class="com.sponews.interceptor.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -17,6 +17,23 @@
 	crossorigin="anonymous">
 
 <title>Spotech</title>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+		integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+		crossorigin="anonymous"></script>
+		
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 </head>
 
 <body>
@@ -57,7 +74,7 @@
 	<div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><a href="/board.spn">[자유게시판]</a></h6>
 		<label for="basic-label" class="font-weight-bold my-3">글 등록하기</label>
-		<form action="/write.done" method="post">
+			<form id="writeForm" action="/write.done" method="post">
 			<div class="input-group mb-1">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="basic-addon1">제목</span>
@@ -65,9 +82,10 @@
 				<input type="text" class="form-control" name="atitle" id="basic-label" placeholder="제목 입력" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<label for="basic-body" class="font-weight-bold my-1">본문 :</label>
-			<textarea class="form-control my-2" name="abody" id="basic-body" rows="10" placeholder="본문 입력" aria-label="With textarea" required></textarea>		
-		  	<button type="submit" class="btn btn-primary my-2">등록</button>
-	  	</form>
+			<input type="hidden" id="abody" name="abody" value=""/>
+			<textarea class="form-control my-2" id="summernote" rows="10" placeholder="본문 입력" aria-label="With textarea" required></textarea>		
+		  	<button type="button" class="btn btn-primary my-2" onclick="goSubmit()">등록</button>
+	  		</form>
 	</div>
 		
 	<hr>
@@ -81,19 +99,46 @@
 			<p>All Rights Reserved.</p>
 		</div>
 	</footer>
+	
+    <script type="text/javascript">
+    $(document).ready(function() {
+	    $('#summernote').summernote({
+	        placeholder: '팁을 입력하세요!',
+	        tabsize: 1,
+	        height: 300,
+	        toolbar: [
+	            // [groupName, [list of button]]
+	            ['style', ['bold', 'italic', 'underline', 'clear']],
+	            ['font', ['strikethrough', 'superscript', 'subscript']],
+	            ['fontsize', ['fontsize']],
+	            ['color', ['color']],
+	            ['para', ['ul', 'ol', 'paragraph']],
+	            ['height', ['height']],
+	            ['link', ['link']]
+	          ]
+	      });
+    });
+    
+      function goSubmit() {
+    	  var form = document.getElementById("writeForm");
+    	  
+    	  var markupStr = $('#summernote').summernote('code');
+    	  
+    	  if(form.atitle.value == "") {    		  
+    		  alert("제목을 입력해주세요.");
+    		  return;
+    	  }
+    	  
+    	  if($('#summernote').summernote('isEmpty')) {
+    		  alert("내용을 입력해주세요.");
+    		  return;
+    	  }
+    	  
+    	  document.getElementById("abody").setAttribute('value', markupStr);
+    	  form.submit();
+  	}
+    </script>
 		
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-		integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-		crossorigin="anonymous"></script>
+
 </body>
 </html>

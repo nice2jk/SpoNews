@@ -19,6 +19,7 @@ public class BoardService {
 		return boardDAO.getArticles(offset);
 	}
 	
+	@Transactional
 	public HashMap<String, Object> getArticle(int aid) {
 		boardDAO.updateViewCount(aid);
 		return boardDAO.getArticle(aid);

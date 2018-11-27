@@ -28,6 +28,10 @@ public class MatchService {
 	}
 	
 	public HashMap<String, Object> getMatch(int matchId) {
+		return matchDAO.getMatch(matchId);
+	}
+	
+	public HashMap<String, Object> getMatchWithComments(int matchId) {
 		HashMap<String, Object> match = matchDAO.getMatch(matchId);
 		
 		List<HashMap<String, Object>> commentList = matchDAO.getCommentList(matchId);

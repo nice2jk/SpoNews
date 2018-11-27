@@ -54,8 +54,7 @@ public class BoardController {
 		if(session.getAttribute("login_user") != null) {
 			@SuppressWarnings("unchecked")
 			String userId = ((HashMap<String, String>) session.getAttribute("login_user")).get("user_id");
-			System.out.println(userId);
-			
+						
 			HashMap<String, Object> requestMap = new HashMap<String, Object>();
 			requestMap.put("userId", userId);
 			requestMap.put("atitle", atitle);

@@ -6,5 +6,25 @@
 		SELECT C.user_id, C.user_nm, C.match_id, C.bet, C.t_title, D.home_name, D.away_name, FROM_UNIXTIME(D.match_time, '%Y-%m-%d %H:%i') AS m_time 
 		FROM (SELECT A.user_id, B.user_nm, A.match_id, A.bet, A.t_title FROM tip AS A INNER JOIN user AS B ON A.user_id = B.user_id ORDER BY A.ctime DESC LIMIT 5) AS C 
 		INNER JOIN sway_match AS D ON C.match_id = D.match_id
-	</select>	
+	</select>
+	
+	<select id="getTips" resultType="java.util.HashMap">
+		SELECT A.tid, A.t_title, A.v_count, B.user_nm, A.ctime 
+		FROM tip AS A INNER JOIN user AS B ON A.user_id = B.user_id WHERE A.match_id = #{matchId};
+	</select>
+	
+	<insert id="setTip" parameterType="java.util.HashMap" useGeneratedKeys="true"  keyProperty="tid">
+		INSERT INTO tip (user_id, match_id, result, bet, t_title, t_body)
+		VALUES (#{userId}, #{matchId}, #{result}, #{bet}, #{ttitle}, #{tbody})
+	</insert>
+	
+	<select id="getTip" resultType="java.util.HashMap">
+		SELECT A.tid, A.user_id, C.user_nm, A.match_id, A.result, A.bet, A.t_title, A.t_body, A.v_count, B.league, FROM_UNIXTIME(B.match_time, '%Y-%m-%d %H:%i') AS m_time, B.home_name, B.away_name, B.score, B.status, B.result 
+		FROM tip AS A INNER JOIN sway_match AS B ON A.match_id = B.match_id INNER JOIN user AS C ON A.user_id = C.user_id 
+		WHERE A.tid = #{tid}; 
+	</select>
+	
+	<update id="updateViewCount">
+		UPDATE tip SET v_count = v_count + 1 WHERE tid = #{tid}
+	</update>
 </mapper>

@@ -56,12 +56,12 @@
 
 	<div class="my-3 p-3 bg-white">
 		<h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><a href="/board.spn">[자유게시판]</a><a href="/write.spn"><img src="/images/write.png" alt="..." class="img-thumbnail mx-2"></a></h6>		
-		<h5 class="border-bottom border-gray py-2 my-3 font-weight-bold">${article.atitle}</h5>
+		<h5 class="border-bottom border-gray py-2 my-3 font-weight-bold">${tip.t_title}</h5>
 		<div class="d-flex justify-content-between py-2 mb-2 small align-items-center w-100 border-bottom border-gray">
-            <span class="font-weight-bold">${article.aid}<img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${article.vcount}]<img src="/images/reply.png" alt="..." class="img-thumbnail mx-2">[${article.count}]</span>
-			<span class="text-success">${article.ctime}</span>
+            <span class="font-weight-bold">${tip.tid}<img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${tip.v_count}]<img src="/images/reply.png" alt="..." class="img-thumbnail mx-2">[${tip.count}]</span>
+			<span class="text-success">${tip.m_time}</span>
 	    </div>
-		<p class="lead rounded shadow-sm small ">${article.abody}</p>
+		<p class="lead rounded shadow-sm small ">${tip.t_body}</p>
 		<button onclick="location.href='/board.spn'" class="btn btn-primary my-2">목록</button>		
 	</div>
 		

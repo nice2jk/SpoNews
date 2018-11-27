@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <html lang="ko">
 <head>
@@ -52,38 +53,50 @@
 	<img src="/images/org_logo.png" class="img-fluid" alt="Responsive image">
 	</div>	
 	
-	<div class="my-3 p-3 bg-white">
+	<div class="my-3 px-2 bg-white">
 		<div class="d-flex justify-content-between mb-2 border-bottom border-gray align-items-center w-100">
 			<c:choose>
 				<c:when test="${match.league == 'SPL' }">
-					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_spl.png" alt="..." class="img-thumbnail mx-2">라리가<a href="/write.spn"></a></h6>
+					<h6 class="pb-2 mb-0 font-weight-bold text-danger "><img src="/images/le_spl.png" alt="..." class="img-thumbnail mx-2">${match.home_name} VS ${match.away_name}</h6>
 				</c:when>
 				<c:when test="${match.league == 'IPL' }">
-					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_ipl.png" alt="..." class="img-thumbnail mx-2">세리아A<a href="/write.spn"></a></h6>
+					<h6 class="pb-2 mb-0 font-weight-bold text-danger "><img src="/images/le_ipl.png" alt="..." class="img-thumbnail mx-2">${match.home_name} VS ${match.away_name}</h6>
 				</c:when>
 				<c:when test="${match.league == 'GPL' }">
-					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_gpl.png" alt="..." class="img-thumbnail mx-2">분데스리가<a href="/write.spn"></a></h6> 
+					<h6 class="pb-2 mb-0 font-weight-bold text-danger "><img src="/images/le_gpl.png" alt="..." class="img-thumbnail mx-2">${match.home_name} VS ${match.away_name}</h6> 
 				</c:when>
 				<c:when test="${match.league == 'FPL' }">
-					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_fpl.png" alt="..." class="img-thumbnail mx-2">리그1<a href="/write.spn"></a></h6> 
+					<h6 class="pb-2 mb-0 font-weight-bold text-danger "><img src="/images/le_fpl.png" alt="..." class="img-thumbnail mx-2">${match.home_name} VS ${match.away_name}</h6> 
 				</c:when>
 				<c:when test="${match.league == 'UCL' }">
-					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_ucl.png" alt="..." class="img-thumbnail mx-2">챔피언스리그<a href="/write.spn"></a></h6> 
+					<h6 class="pb-2 mb-0 font-weight-bold text-danger "><img src="/images/le_ucl.png" alt="..." class="img-thumbnail mx-2">${match.home_name} VS ${match.away_name}</h6> 
 				</c:when>
 				<c:otherwise>
-					<h6 class="pb-2 mb-0 font-weight-bold text-info"><img src="/images/le_epl.png" alt="..." class="img-thumbnail mx-2">프리미어리그<a href="/write.spn"></a></h6> 
+					<h6 class="pb-2 mb-0 font-weight-bold text-danger "><img src="/images/le_epl.png" alt="..." class="img-thumbnail mx-2">${match.home_name} VS ${match.away_name}</h6> 
 				</c:otherwise>
 			</c:choose>
-			<h6 class="pb-2 mb-0 font-weight-bold text-dark"><img src="/images/write.png" alt="..." class="img-thumbnail"> 팁쓰기</h6>
+			<h6 class="pb-2 mb-0 font-weight-bold text-danger "><a href="/tip_write.spn?match_id=${match.match_id}"><img src="/images/write.png" alt="..." class="img-thumbnail"> 팁쓰기</a></h6>
 		</div>
 	</div>
 	
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><a href="/board.spn">[팁 리스트] </a></h6>
+      <c:forEach var="tip" begin="0" end="${fn:length(tips)}" items="${tips}" varStatus="status">
+        <div class="media text-muted pt-2">
+        <div class="media-body pb-2 mb-0 lh-125 border-bottom border-gray">		  
+          <div class="d-flex justify-content-between mb-2 small align-items-center w-100">
+            <span class="font-weight-bold">${tip.tid}<span class="font-weight-bold mx-2">${tip.user_nm}</span><img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${tip.v_count}]</span>
+			<span class="text-success">${tip.ctime}</span>
+          </div>
+          <strong style="text-overflow: ellipsis; overflow: hidden;"><a href="/article.spn?aid=${tip.tid}" class="text-danger">${tip.t_title}</a></strong>    
+        </div>
+      	</div>
+      </c:forEach>
+    </div>
+	
 	<form action="matchComment.spn" method="post">
 	    <section class="text-center bg-white border-bottom border-gray pb-3 mx-3">
-	      <div class="container">	      
-	        <h4 class="jumbotron-heading font-weight-bold text-danger">${match.home_name}</h4>
-	        <p class="font-weight-bold text-danger">VS</p>
-	        <h4 class="jumbotron-heading font-weight-bold text-danger">${match.away_name}</h4>
+	      <div class="container">
 	        <c:choose>
 	        <c:when test="${match.total == 0}">
 	        	<p class="lead font-weight-bold text-primary">응원 현황 (승: 0% 무: 0% 패: 0%)</p>	        	

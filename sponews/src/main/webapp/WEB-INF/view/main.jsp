@@ -83,10 +83,10 @@
           </div>
           <c:choose>
           	<c:when test="${match.st_cd == 0}">
-          		<strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-muted">${match.home_name} VS ${match.away_name}</a><img src="/images/match.png" alt="..." class="ml-2 img-thumbnail"></strong>
+          		<strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-muted">${match.home_name} VS ${match.away_name} (${match.tip_count})</a><img src="/images/match.png" alt="..." class="ml-2 mr-2 img-thumbnail"></strong>
           	</c:when>
           	<c:otherwise>
-          		<strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-danger">${match.home_name} VS ${match.away_name}</a></strong>
+          		<strong class="text-gray-dark"><a href="/matchDetail.spn?match_id=${match.match_id}" class="text-danger">${match.home_name} VS ${match.away_name} <small>(${match.tip_count})</small></a></strong>
           	</c:otherwise>
           </c:choose>
         </div>
@@ -100,13 +100,13 @@
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-danger">최신 팁 정보!</h6>
       <c:forEach var="tip" begin="0" end="5" items="${tip_list}" varStatus="status">
-           <div class="media  pt-2">
+           <div class="media pt-2">
 	        <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
 	          <div class="d-flex justify-content-between align-items-center w-100">
-	            <strong class="text-info">${tip.t_title} | ${tip.user_nm} | ${tip.bet}</strong>
-	            <a href="#">상세 정보</a>
+	            <strong>${tip.t_title} | ${tip.user_nm} [${tip.bet}]</strong>
+	            <a href="/tip_view.spn?tip_id=${tip.tid}">상세 정보</a>
 	          </div>
-	          <strong class="d-block my-2">${tip.home_name} vs ${tip.away_name} (${tip.m_time })</strong>
+	          <strong class="d-block my-2 text-info">${tip.home_name} vs ${tip.away_name} (${tip.m_time })</strong>
 	        </div>
 	      </div>
       </c:forEach>      

@@ -87,7 +87,8 @@ public class MatchController {
 		
 		HashMap<String, Object> match = matchService.setComment(matchId, inlineRadioOptions, comment); 
 		model.addAttribute("match", match);
-		model.addAttribute("league", (String) match.get("league"));		
+		model.addAttribute("league", (String) match.get("league"));
+		model.addAttribute("tips", tipService.getTips(matchId));
 		
 		return "match_detail";
 	}

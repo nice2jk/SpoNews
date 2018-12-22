@@ -55,14 +55,24 @@
 	</div>
 
 	<div class="my-3 p-3 bg-white">
-		<h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><a href="/board.spn">[자유게시판]</a><a href="/write.spn"><img src="/images/write.png" alt="..." class="img-thumbnail mx-2"></a></h6>		
+		<h6 class="border-bottom border-gray pb-2 mb-0 font-weight-bold text-primary"><span class="pb-2 mr-2 text-danger">[${tip.league}]</span>${tip.home_name} VS ${tip.away_name}</h6>		
 		<h5 class="border-bottom border-gray py-2 my-3 font-weight-bold">${tip.t_title}</h5>
 		<div class="d-flex justify-content-between py-2 mb-2 small align-items-center w-100 border-bottom border-gray">
+            <span class="font-weight-bold"> Tip : 
+            <c:choose>
+            	<c:when test="${tip.result == 1}"><span class="text-primary">홈팀 승리</span></c:when>
+            	<c:when test="${tip.result == 2}"><span class="text-danger">원정 승리</span></c:when>
+            	<c:when test="${tip.result == 0}"><span class="text-mute">무승부</span></c:when>
+            </c:choose>
+            <img src="/images/trust.png" alt="..." class="img-thumbnail mx-2"><span class="text-danger">(${tip.bet})</span></span>
+			<span class="text-primary">${tip.user_nm}</span>
+	    </div>
+	    <div class="d-flex justify-content-between py-2 mb-2 small align-items-center w-100 border-bottom border-gray">
             <span class="font-weight-bold">${tip.tid}<img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${tip.v_count}]<img src="/images/reply.png" alt="..." class="img-thumbnail mx-2">[${tip.count}]</span>
-			<span class="text-success">${tip.m_time}</span>
+			<span class="text-success">${tip.ctime}</span>
 	    </div>
 		<p class="lead rounded shadow-sm small ">${tip.t_body}</p>
-		<button onclick="location.href='/board.spn'" class="btn btn-primary my-2">목록</button>		
+		<button onclick="location.href='matchDetail.spn?match_id=${tip.match_id}'" class="btn btn-primary my-2">목록</button>		
 	</div>
 		
 	<hr>

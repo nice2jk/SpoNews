@@ -106,7 +106,7 @@
 				<input type="text" class="form-control" name="ttitle" id="basic-label" placeholder="팁 제목 입력" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			  <div class="form-group mt-3 small">
-			    <label for="formControlRange" class="font-weight-bold text-primary">신뢰도를 정해주세요. (약 1 ~ 강 10 : 기본 4)</label>
+			    <label for="formControlRange" class="font-weight-bold text-primary">신뢰도를 정해주세요. 약 --> 강 (1~10 : 기본 3)</label>
 			    <input type="range" class="form-control-range" id="trange" name="trange" min="1" max="10" value="3" step="1">
 			  </div>
 	    	<section class="border-bottom border-gray my-2 pb-2 small">

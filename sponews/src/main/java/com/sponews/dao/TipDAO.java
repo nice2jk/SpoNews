@@ -13,5 +13,6 @@ public interface TipDAO {
 	public int setTip(HashMap<String, Object> requestMap);
 	public HashMap<String, Object> getTip(@Param("tid") long tid); 
 	public void updateViewCount(@Param("tid") int tid);
+	public int getTipCount(@Param("matchId") int matchId);
 	
 }

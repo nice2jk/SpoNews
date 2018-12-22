@@ -72,4 +72,18 @@ public class TipController {
 		
 		return "redirect:/tip_write.spn?match_id=" + matchId;
 	}
+	
+	@RequestMapping(value="/tip_view.spn", method=RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String tipView(
+			@RequestParam(value="tip_id", required=true) int tid,
+			Model model) {
+		System.out.println("tip view");
+		
+		model.addAttribute("tip", tipService.getTip(tid));
+		
+		return "tip_view";
+	}
+			
+	
 }

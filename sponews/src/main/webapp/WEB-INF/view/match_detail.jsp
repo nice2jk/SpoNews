@@ -88,7 +88,7 @@
             <span class="font-weight-bold">${tip.tid}<span class="font-weight-bold mx-2">${tip.user_nm}</span><img src="/images/view.png" alt="..." class="img-thumbnail mx-2">[${tip.v_count}]</span>
 			<span class="text-success">${tip.ctime}</span>
           </div>
-          <strong style="text-overflow: ellipsis; overflow: hidden;"><a href="/article.spn?aid=${tip.tid}" class="text-danger">${tip.t_title}</a></strong>    
+          <strong style="text-overflow: ellipsis; overflow: hidden;"><a href="/tip_view.spn?tip_id=${tip.tid}" class="text-danger">${tip.t_title}</a></strong>    
         </div>
       	</div>
       </c:forEach>
@@ -137,13 +137,13 @@
           <div class="d-flex justify-content-between mb-2 align-items-center w-100">
             <c:choose>
             <c:when test="${comment.result == 1}">
-            	@username (승)
+            	홈팀 응원 (승)
             </c:when>
             <c:when test="${comment.result == 2}">
-            	@username (패)
+            	원정 응원 (패)
             </c:when>
             <c:otherwise>
-            	@username (무)
+            	아무나! (무)
             </c:otherwise>
             </c:choose>            
 			<span class="text-success">${comment.c_time}</span>            

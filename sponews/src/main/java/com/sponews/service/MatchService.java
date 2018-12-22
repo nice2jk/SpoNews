@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sponews.dao.MatchDAO;
+import com.sponews.dao.TipDAO;
 
 @Service
 public class MatchService {
@@ -15,8 +16,18 @@ public class MatchService {
 	@Autowired
 	private MatchDAO matchDAO;
 	
+	@Autowired
+	private TipDAO tipDAO;
+	
 	public List<HashMap<String, Object>> getLatestMatchList() {
-		return matchDAO.getLatestMatchList();
+		List<HashMap<String, Object>> matchList = matchDAO.getLatestMatchList();
+		
+		for(int i = 0; i < matchList.size(); i++) {
+			HashMap<String, Object> match = matchList.get(i);
+			match.put("tip_count", tipDAO.getTipCount((int)match.get("match_id")));			
+		}
+		
+		return matchList;
 	}
 	
 	public List<HashMap<String, Object>> getMatchList(String league) {
